@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Rotación semanal de aseo del depa: quién hace qué cada semana." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <script is:inline>
+      // Antes de pintar: aplica el tema guardado o el del sistema para evitar parpadeo.
+      (function () {
+        var root = document.documentElement;
+        var media = window.matchMedia("(prefers-color-scheme: dark)");
+        var stored = null;
+        try {
+          stored = localStorage.getItem("aseo-theme");
+        } catch (e) {}
+        root.classList.toggle("dark", stored ? stored === "dark" : media.matches);
+        if (!stored) {
+          media.addEventListener("change", function (e) {
+            var current = null;
+            try {
+              current = localStorage.getItem("aseo-theme");
+            } catch (err) {}
+            if (!current) root.classList.toggle("dark", e.matches);
+          });
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

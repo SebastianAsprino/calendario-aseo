@@ -1,0 +1,12 @@
+---
+import App from "../components/App.svelte";
+import Layout from "../layouts/Layout.astro";
+import { todayDay } from "../lib/rotation";
+
+// El HTML estático se genera con la fecha del build; al hidratar se usa la fecha local del visitante.
+const buildDay = todayDay();
+---
+
+<Layout title="Aseo del depa">
+  <App client:load buildDay={buildDay} />
+</Layout>

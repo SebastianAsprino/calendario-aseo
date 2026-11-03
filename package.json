@@ -1,0 +1,27 @@
+{
+  "name": "calendario-aseo",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "7.2.5",
+    "@lucide/svelte": "1.59.0",
+    "@tailwindcss/vite": "4.3.3",
+    "astro": "5.18.2",
+    "svelte": "5.57.2",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@types/bun": "1.4.3",
+    "ical.js": "2.2.1",
+    "typescript": "5.9.3"
+  }
+}
