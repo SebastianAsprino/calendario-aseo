@@ -1,0 +1,15 @@
+{
+  // Sitio 100% estático: el Worker solo sirve los archivos de dist/ (sin adapter de Astro ni SSR).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "calendario-aseo",
+  "compatibility_date": "2026-11-02",
+  "assets": {
+    "directory": "./dist"
+  },
+  "routes": [
+    {
+      "pattern": "aseo.asprino.dev",
+      "custom_domain": true
+    }
+  ]
+}
