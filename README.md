@@ -30,6 +30,9 @@ bun run preview  # servir dist/ localmente
 cualquier hosting estático (Cloudflare Pages, Netlify, GitHub Pages, Vercel, un servidor con nginx…):
 basta con publicar el contenido de `dist/`.
 
+El dominio público es `https://aseo.asprino.dev` (`site` en `astro.config.mjs`). Los enlaces de
+suscripción se generan con ese dominio, así que si cambia hay que actualizarlo ahí.
+
 Si el sitio queda en una subcarpeta (por ejemplo GitHub Pages en `/calendario-aseo/`), configura
 `base` en `astro.config.mjs`.
 

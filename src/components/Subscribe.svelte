@@ -13,13 +13,17 @@
     ...PEOPLE.map((p) => ({ label: p.name, file: `${p.slug}.ics`, calendarName: personCalendarName(p.slug) })),
   ];
 
-  /** Vacío hasta hidratar: el dominio final todavía no está decidido. */
-  let origin = $state("");
+  /**
+   * Dominio público (`site` en astro.config.mjs). Las suscripciones apuntan siempre ahí, aunque el
+   * sitio se abra desde otra URL (preview de Cloudflare, localhost). Sin `site`, se usa el origen
+   * actual al hidratar.
+   */
+  let origin = $state(import.meta.env.SITE ? new URL(import.meta.env.SITE).origin : "");
   let copied = $state<string | null>(null);
   let status = $state("");
 
   onMount(() => {
-    origin = window.location.origin;
+    if (!origin) origin = window.location.origin;
   });
 
   function linksFor(file: string, calendarName: string) {
